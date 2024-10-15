@@ -1,1 +1,26 @@
-/* Write your style here */
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.read {
+  background-color: green;
+  max-width: 350px;
+}
+
+.not-read {
+  background-color: red;
+  max-width: 350px;
+}
+
+img {
+  max-width: 300px;
+  display: block;
+  margin-top: 10px;
+}

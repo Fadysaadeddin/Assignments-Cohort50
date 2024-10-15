@@ -7,5 +7,17 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/2-B
    `list-item`.
 3. Look in the css file!
 ------------------------------------------------------------------------------*/
+const liElements = document.querySelectorAll('li');
+liElements.forEach((li) => {
+  const spanElement = li.querySelector('span');
 
-// TODO add your JavaScript code here.
+  if (li.querySelector('#nickname')) {
+    spanElement.textContent = 'Fady saadeddin';
+  } else if (li.querySelector('#fav-food')) {
+    spanElement.textContent = 'chicken and tomate with sauce ';
+  } else {
+    spanElement.textContent = 'fijnaart';
+  }
+
+  li.classList.add('list-item');
+});
