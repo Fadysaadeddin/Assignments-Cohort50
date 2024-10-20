@@ -10,13 +10,16 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/2-B
 const liElements = document.querySelectorAll('li');
 liElements.forEach((li) => {
   const spanElement = li.querySelector('span');
-
-  if (li.querySelector('#nickname')) {
-    spanElement.textContent = 'Fady saadeddin';
-  } else if (li.querySelector('#fav-food')) {
-    spanElement.textContent = 'chicken and tomate with sauce ';
-  } else {
-    spanElement.textContent = 'fijnaart';
+  switch (spanElement.id) {
+    case 'nickname':
+      spanElement.textContent = 'Fady saadeddin';
+      break;
+    case 'fav-food':
+      spanElement.textContent = 'chicken and tomate with sauce ';
+      break;
+    case 'hometown':
+      spanElement.textContent = 'fijnaart';
+      break;
   }
 
   li.classList.add('list-item');

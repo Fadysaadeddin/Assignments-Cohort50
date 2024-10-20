@@ -20,33 +20,39 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/2-B
 
    https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif
 -----------------------------------------------------------------------------*/
+
 const imgElement = document.querySelector('img');
 const imgSrc = imgElement.src;
-console.log(imgElement);
 
 imgElement.style.position = 'absolute';
 imgElement.style.left = '0px';
 
 function catWalk() {
-  const currentLeft = parseInt(imgElement.style.left);
-
-  imgElement.style.left = currentLeft + 10 + 'px';
-
   const windowWidth = window.innerWidth;
   const middleOfScreen = windowWidth / 2;
-  const catWidth = imgElement.offsetWidth;
 
-  if (currentLeft + catWidth >= windowWidth) {
-    imgElement.style.left = '0px';
-  }
-  if (currentLeft + catWidth >= middleOfScreen) {
-    imgElement.src =
-      'https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif';
-    setTimeout(() => {
-      imgElement.src = imgSrc;
-    }, 5000);
-  }
+  const walkInterval = setInterval(() => {
+    const currentLeft = parseInt(imgElement.style.left);
+    imgElement.style.left = currentLeft + 10 + 'px';
+
+    const catWidth = imgElement.offsetWidth;
+
+    if (currentLeft + catWidth >= windowWidth) {
+      imgElement.style.left = '0px';
+    }
+
+    if (currentLeft + catWidth >= middleOfScreen) {
+      clearInterval(walkInterval);
+      imgElement.src =
+        'https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif';
+    }
+  }, 50);
 }
+setTimeout(() => {
+  setInterval();
+  imgElement.src = imgSrc;
+}, 2000);
+
 window.addEventListener('load', () => {
-  setInterval(catWalk, 500);
+  catWalk();
 });
