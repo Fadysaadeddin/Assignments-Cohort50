@@ -62,7 +62,7 @@ const getRandomNumber = (max) => Math.floor(Math.random() * max);
  * @param {number} die
  * @returns {Promise<DieFace>}
  */
-export function rollDie(die = 1) {
+export default function rollDie(die = 1) {
   return new Promise((resolve, reject) => {
     // Introduce a slightly random variation in roll time.
     const rollTime = ROLL_TIME - 5 + getRandomNumber(10);
@@ -100,7 +100,7 @@ export function rollDie(die = 1) {
           logStamped(`Die ${die} continues rolling on the floor...`);
           offTable = true;
         }
-        reject(new Error(`Die ${die} rolled off the table.\n`));
+        reject(Error(`Die ${die} rolled off the table.\n`));
       }
 
       // If the dice settles (i.e. all mandated rolls are completed) we
