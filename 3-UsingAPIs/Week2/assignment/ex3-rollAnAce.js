@@ -8,6 +8,7 @@ Full description at: https://github.com/HackYourFuture/Assignments/blob/main/3-U
    without using recursion. Hint: a `while` loop may come handy.
 3. Refactor the function `main()` to use async/await and try/catch.
 ------------------------------------------------------------------------------*/
+
 // ! Do not change or remove the next two lines
 import { rollDie } from '../../helpers/pokerDiceRoller.js';
 /** @import {DieFace} from "../../helpers/pokerDiceRoller.js" */
@@ -17,21 +18,26 @@ import { rollDie } from '../../helpers/pokerDiceRoller.js';
  * @param {DieFace} desiredValue
  * @returns {Promise<DieFace>}
  */
-export function rollDieUntil(desiredValue) {
-  // TODO rewrite this function using async/await
-  return rollDie().then((value) => {
-    if (value !== desiredValue) {
-      return rollDieUntil(desiredValue);
-    }
+export async function rollDieUntil(desiredValue) {
+  try {
+    let value;
+    do {
+      value = await rollDie();
+    } while (value !== desiredValue);
     return value;
-  });
+  } catch (error) {
+    console.error('error happened', error);
+    throw error;
+  }
 }
 
-// TODO refactor this function to use try/catch
-function main() {
-  rollDieUntil('ACE')
-    .then((results) => console.log('Resolved!', results))
-    .catch((error) => console.log('Rejected!', error.message));
+async function main() {
+  try {
+    const results = await rollDieUntil('ACE');
+    console.log('Resolved!', results);
+  } catch (error) {
+    console.log('Rejected!', error.message);
+  }
 }
 
 // ! Do not change or remove the code below

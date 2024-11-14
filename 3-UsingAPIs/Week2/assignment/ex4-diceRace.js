@@ -13,17 +13,27 @@ Full description at: https://github.com/HackYourFuture/Assignments/blob/main/3-U
 import { rollDie } from '../../helpers/pokerDiceRoller.js';
 /** @import {DieFace} from "../../helpers/pokerDiceRoller.js" */
 
-export function rollDice() {
+export async function rollDice() {
   const dice = [1, 2, 3, 4, 5];
-  // TODO complete this function; use Promise.race() and rollDie()
-  rollDie(1); // TODO placeholder: modify as appropriate
+  try {
+    const rollPromises = dice.map((roll) => rollDie(roll));
+
+    const result = await Promise.race(rollPromises);
+
+    return result;
+  } catch (error) {
+    console.error('Error occurred during dice roll:', error);
+    throw error;
+  }
 }
 
-// Refactor this function to use async/await and try/catch
-function main() {
-  rollDice()
-    .then((results) => console.log('Resolved!', results))
-    .catch((error) => console.log('Rejected!', error.message));
+async function main() {
+  try {
+    const results = await rollDice();
+    console.log('Resolved!', results);
+  } catch (error) {
+    console.log('Rejected!', error.message);
+  }
 }
 
 // ! Do not change or remove the code below

@@ -1,0 +1,27 @@
+*** Unit Test Error Report ***
+
+console.error
+    error happened Error: Die 1 rolled off the table.
+    
+        at rollOnce (C:\api-w2\Assignments-Cohort50\3-UsingAPIs\helpers\pokerDiceRoller.js:103:16)
+        at Timeout.rollOnce [as _onTimeout] (C:\api-w2\Assignments-Cohort50\3-UsingAPIs\helpers\pokerDiceRoller.js:116:26)
+        at listOnTimeout (node:internal/timers:594:17)
+        at processTimers (node:internal/timers:529:7)
+
+      at error (3-UsingAPIs/Week2/assignment/ex3-rollAnAce.js:29:13)
+
+ PASS  .dist/3-UsingAPIs/Week2/unit-tests/ex3-rollAnAce.test.js
+  api-wk2-ex3-rollAnAce
+    ✅ should have all TODO comments removed (3 ms)
+    ✅ `rollDieUntil` should not contain unneeded console.log calls (1 ms)
+    ✅ should not include a recursive call
+    ✅ should use async/wait
+    ✅ should use try/catch
+    ✅ should resolve as soon as a die settles on an ACE (134 ms)
+    ✅ should reject with an Error when a die rolls off the table (173 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        1.338 s
+Ran all test suites matching /C:\\api-w2\\Assignments-Cohort50\\.dist\\3-UsingAPIs\\Week2\\unit-tests\\ex3-rollAnAce.test.js/i.
